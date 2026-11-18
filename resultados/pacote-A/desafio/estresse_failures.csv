@@ -1,0 +1,4 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+GET,GET /api/disciplinas,CatchResponseError('Erro técnico HTTP 0'),477,2026-11-25T03:12:29Z,2026-11-25T03:12:38Z
+POST,POST /api/matriculas,CatchResponseError('Erro técnico HTTP 0'),333,2026-11-25T03:12:29Z,2026-11-25T03:12:38Z
+GET,GET /api/matriculas/[id]/comprovante,CatchResponseError('Erro técnico comprovante HTTP 0'),179,2026-11-25T03:12:29Z,2026-11-25T03:12:38Z

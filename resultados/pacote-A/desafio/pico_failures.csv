@@ -1,0 +1,2 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+GET,GET /api/matriculas/[id]/comprovante,CatchResponseError('Erro técnico comprovante HTTP 0'),69,2026-11-25T03:07:58Z,2026-11-25T03:08:35Z
