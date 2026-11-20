@@ -1,0 +1,7 @@
+Method,Name,Error,Occurrences,First Seen,Last Seen
+POST,POST /api/token/,CatchResponseError('Falha login JWT HTTP 0'),36,2026-11-25T03:28:06Z,2026-11-25T03:28:10Z
+GET,GET /api/agendamentos/especialidades/,CatchResponseError('HTTP 0'),3,2026-11-25T03:28:09Z,2026-11-25T03:28:10Z
+GET,GET /api/agendamentos/consultas/,CatchResponseError('HTTP 401'),82,2026-11-25T03:28:09Z,2026-11-25T03:28:24Z
+GET,GET /api/agendamentos/horarios/?status=DISPONIVEL,CatchResponseError('HTTP 0'),3,2026-11-25T03:28:08Z,2026-11-25T03:28:10Z
+GET,GET /api/agendamentos/consultas/,CatchResponseError('HTTP 0'),2,2026-11-25T03:28:08Z,2026-11-25T03:28:09Z
+GET,GET /api/usuarios/especialistas/,CatchResponseError('HTTP 0'),2,2026-11-25T03:28:08Z,2026-11-25T03:28:09Z
