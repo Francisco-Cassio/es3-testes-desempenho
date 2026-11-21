@@ -1,0 +1,34 @@
+cenario,execucao,data,tipo_teste,usuarios,ritmo_r,duracao_s,requisicoes,p50_ms,p95_ms,req_s,falhas_pct,decisao,justificativa
+Exemplo A - Sabor Express,r1,2026-11-18,carga,50,10,120,1401,2100,2100,11.61,0.0,nao atende,Gargalo em GET /api/relatorio/vendas (p95=2200ms devido ao lock global e custo linear por pedido)
+Exemplo A - Sabor Express,r1,2026-11-18,estresse,250,25,300,9639,2100,2200,32.06,0.0,nao atende,Gargalo em GET /api/relatorio/vendas (p95=6800ms devido ao lock global e custo linear por pedido)
+Desafio A - Matricula Academica,r1,2026-11-18,carga,100,20,120,3154,45,10000,26.15,15.28,nao atende,"p95 geral=10000ms, p95 comprovante=10000ms (lock global de 250ms no gerador de PDF), falhas=15.28%"
+Desafio A - Matricula Academica,r1,2026-11-18,pico,200,40,90,4273,27,67,47.76,1.61,nao atende,"p95 geral=67ms, p95 comprovante=10000ms (lock global de 250ms no gerador de PDF), falhas=1.61%"
+Desafio A - Matricula Academica,r1,2026-11-18,estresse,400,25,200,21216,28,69,106.11,4.66,nao atende,"p95 geral=69ms, p95 comprovante=3300ms (lock global de 250ms no gerador de PDF), falhas=4.66%"
+Exemplo B - Catalogo Biblioteca,r1,2026-11-19,carga,20,2,90,3851,36,42,43.12,0.0,atende,p95=42ms <= 500ms e 0% de falhas com 20 leitores simultaneos
+Desafio B - Minicursos (verificacao1),r1,2026-11-19,verificacao,1,1,15,32,36,36,2.34,0.0,atende,"Dentro do SLA (p95=36ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (verificacao1),r2,2026-11-19,verificacao,1,1,15,34,36,36,2.46,0.0,atende,"Dentro do SLA (p95=36ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (verificacao1),r3,2026-11-19,verificacao,1,1,15,32,36,37,2.29,0.0,atende,"Dentro do SLA (p95=37ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (referencia5),r1,2026-11-19,referencia,5,1,35,370,35,37,10.81,0.0,atende,"Dentro do SLA (p95=37ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (referencia5),r2,2026-11-19,referencia,5,1,35,353,36,38,10.34,0.0,atende,"Dentro do SLA (p95=38ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (referencia5),r3,2026-11-19,referencia,5,1,35,366,36,38,10.74,0.0,atende,"Dentro do SLA (p95=38ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (carga20),r1,2026-11-19,carga,20,2,35,1346,36,40,39.45,0.0,atende,"Dentro do SLA (p95=40ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (carga20),r2,2026-11-19,carga,20,2,35,1357,36,41,39.68,0.0,atende,"Dentro do SLA (p95=41ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (carga20),r3,2026-11-19,carga,20,2,35,1350,36,40,39.54,0.0,atende,"Dentro do SLA (p95=40ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (estresse50),r1,2026-11-19,estresse,50,5,35,3310,41,80,96.78,0.03,atende,"Dentro do SLA (p95=80ms <= 500ms, falhas=0.03% <= 1%)"
+Desafio B - Minicursos (estresse50),r2,2026-11-19,estresse,50,5,35,3271,42,79,95.86,0.03,atende,"Dentro do SLA (p95=79ms <= 500ms, falhas=0.03% <= 1%)"
+Desafio B - Minicursos (estresse50),r3,2026-11-19,estresse,50,5,35,3321,41,71,97.2,0.0,atende,"Dentro do SLA (p95=71ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (estresse100),r1,2026-11-19,estresse,100,10,35,5720,120,140,167.66,28.25,nao atende,Saturacao do semaforo de 4 consultas simultaneas (HTTP 503 com 28.25% de rejeicao)
+Desafio B - Minicursos (estresse100),r2,2026-11-19,estresse,100,10,35,5720,120,140,167.52,28.37,nao atende,Saturacao do semaforo de 4 consultas simultaneas (HTTP 503 com 28.37% de rejeicao)
+Desafio B - Minicursos (estresse100),r3,2026-11-19,estresse,100,10,35,5694,120,140,166.9,28.01,nao atende,Saturacao do semaforo de 4 consultas simultaneas (HTTP 503 com 28.01% de rejeicao)
+Desafio B - Minicursos (recuperacao20),r1,2026-11-19,recuperacao,20,2,35,1349,35,43,39.5,0.0,atende,"Dentro do SLA (p95=43ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (recuperacao20),r2,2026-11-19,recuperacao,20,2,35,1351,34,39,39.59,0.0,atende,"Dentro do SLA (p95=39ms <= 500ms, falhas=0.0% <= 1%)"
+Desafio B - Minicursos (recuperacao20),r3,2026-11-19,recuperacao,20,2,35,1343,34,42,39.34,0.0,atende,"Dentro do SLA (p95=42ms <= 500ms, falhas=0.0% <= 1%)"
+Projeto Anterior - Clinica Agenda (clinica_carga20),r1,2026-11-20,carga,20,4,25,432,9,48,17.95,0.0,atende,"p95 geral=48ms, listagem horarios p95=25ms, login JWT PBKDF2 p95=1700ms, falhas=0.0%"
+Projeto Anterior - Clinica Agenda (clinica_carga20),r2,2026-11-20,carga,20,4,25,428,9,40,17.75,0.0,atende,"p95 geral=40ms, listagem horarios p95=22ms, login JWT PBKDF2 p95=1600ms, falhas=0.0%"
+Projeto Anterior - Clinica Agenda (clinica_carga20),r3,2026-11-20,carga,20,4,25,437,9,43,18.13,0.0,atende,"p95 geral=43ms, listagem horarios p95=24ms, login JWT PBKDF2 p95=1700ms, falhas=0.0%"
+Projeto Anterior - Clinica Agenda (clinica_estresse60),r1,2026-11-20,estresse,60,10,25,976,13,3300,40.4,13.11,nao atende,"p95 geral=3300ms, listagem horarios p95=2000ms, login JWT PBKDF2 p95=5700ms, falhas=13.11%"
+Projeto Anterior - Clinica Agenda (clinica_estresse60),r2,2026-11-20,estresse,60,10,25,989,14,3000,40.68,12.74,nao atende,"p95 geral=3000ms, listagem horarios p95=1100ms, login JWT PBKDF2 p95=5600ms, falhas=12.74%"
+Projeto Anterior - Clinica Agenda (clinica_estresse60),r3,2026-11-20,estresse,60,10,25,979,12,3400,40.35,15.12,nao atende,"p95 geral=3400ms, listagem horarios p95=1700ms, login JWT PBKDF2 p95=6500ms, falhas=15.12%"
+Projeto Anterior - Clinica Agenda (clinica_recuperacao20),r1,2026-11-20,recuperacao,20,4,25,437,9,36,18.23,0.0,atende,"p95 geral=36ms, listagem horarios p95=23ms, login JWT PBKDF2 p95=1600ms, falhas=0.0%"
+Projeto Anterior - Clinica Agenda (clinica_recuperacao20),r2,2026-11-20,recuperacao,20,4,25,441,10,27,18.28,0.0,atende,"p95 geral=27ms, listagem horarios p95=20ms, login JWT PBKDF2 p95=1600ms, falhas=0.0%"
+Projeto Anterior - Clinica Agenda (clinica_recuperacao20),r3,2026-11-20,recuperacao,20,4,25,438,9,67,18.16,0.0,atende,"p95 geral=67ms, listagem horarios p95=25ms, login JWT PBKDF2 p95=1700ms, falhas=0.0%"
