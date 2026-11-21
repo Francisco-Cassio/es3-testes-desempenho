@@ -13,8 +13,9 @@ import sys
 from datetime import time
 from pathlib import Path
 
-# Aponta para a pasta do projeto Django
-DJANGO_DIR = Path(__file__).resolve().parents[2] / "Teste-Tecnico_Backend-Django"
+# Aponta para a pasta do projeto Django (dentro do próprio repositório ou na pasta raiz)
+_LOCAL_BACKEND = Path(__file__).resolve().parent / "backend"
+DJANGO_DIR = _LOCAL_BACKEND if _LOCAL_BACKEND.exists() else (Path(__file__).resolve().parents[2] / "Teste-Tecnico_Backend-Django")
 sys.path.insert(0, str(DJANGO_DIR))
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "setup.settings")
@@ -24,11 +25,15 @@ from django.conf import settings
 
 # Se USE_SQLITE=1 estiver definido, usa SQLite local para rodar sem depender de container Postgres externo
 if os.getenv("USE_SQLITE", "1") == "1":
-    settings.DATABASES["default"] = {
+    settings.DATABASES["default"].update({
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": str(DJANGO_DIR / "db_teste_local.sqlite3"),
         "OPTIONS": {"timeout": 30},
-    }
+    })
+    settings.PASSWORD_HASHERS = [
+        "django.contrib.auth.hashers.MD5PasswordHasher",
+        "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    ]
 
 django.setup()
 
@@ -41,13 +46,9 @@ from usuarios.models import Especialista, Paciente, TipoUsuario, Usuario
 def popular_dados():
     call_command("migrate", verbosity=0)
 
-    # Limpa dados anteriores
-    Consulta.all_objects.all().delete()
-    HorarioGerado.all_objects.all().delete()
-    Agenda.all_objects.all().delete()
-    Especialista.all_objects.all().delete()
-    Paciente.all_objects.all().delete()
-    Especialidade.all_objects.all().delete()
+    # Limpa fisicamente os dados anteriores (contornando o soft-delete do CommonModel)
+    for model in (Consulta, HorarioGerado, Agenda, Especialista, Paciente, Especialidade):
+        model.all_objects.all()._raw_delete(model.all_objects.db)
     Usuario.objects.all().delete()
 
     # 1. Usuário Interno / Admin

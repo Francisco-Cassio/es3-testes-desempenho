@@ -6,7 +6,8 @@ import os
 import sys
 from pathlib import Path
 
-DJANGO_DIR = Path(__file__).resolve().parents[2] / "Teste-Tecnico_Backend-Django"
+_LOCAL_BACKEND = Path(__file__).resolve().parent / "backend"
+DJANGO_DIR = _LOCAL_BACKEND if _LOCAL_BACKEND.exists() else (Path(__file__).resolve().parents[2] / "Teste-Tecnico_Backend-Django")
 sys.path.insert(0, str(DJANGO_DIR))
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "setup.settings")
